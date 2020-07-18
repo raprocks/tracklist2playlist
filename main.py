@@ -8,7 +8,7 @@ import sys
 @click.option('--url', required=True, help="live url from livetracklist.com or 1001tracklists.com", prompt="Please Enter URL: ")
 def main(username, url):
     sp = Spoti(username)
-    if "1001tracklists.com" in url:
+    if "1001tracklists.com/tracklist" in url:
         tracklist = Thousandonetracklists(url)
     elif "livetracklist.com" in url:
         tracklist = Livetracklist(url)
