@@ -31,7 +31,7 @@ class Thousandonetracklists:
         for each in tracks:
             full_info = each.find('span', class_="trackFormat")
             full_info = full_info.text.strip()
-            artists_each,song_name = tuple(full_info.split("-"))
+            artists_each,song_name = tuple(full_info.split("-", 1))
             song_titles.append(song_name.strip().replace("\xa0", " "))
             artists.append(artists_each.strip().replace("\xa0", " "))
         data = zip(song_titles, artists)
