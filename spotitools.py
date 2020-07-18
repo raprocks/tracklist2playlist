@@ -28,8 +28,12 @@ class Spoti:
             self.query = self._query_builder(title, artist_2)
             results = self.spoti.search(q=self.query, limit=1, type='track')
             if len(results['tracks']['items'])==0:
-                print("cannot find ", title ,"by", artist)
-                return ""
+                artist_3 = artist.split("vs")[0]
+                self.query = self._query_builder(title, artist_3)
+                results = self.spoti.search(q=self.query, limit=1, type='track')
+                if len(results['tracks']['items'])==0:
+                    print("cannot find ", title ,"by", artist)
+                    return ""
         uri = results['tracks']['items'][0]['id']
         self.searched.append(uri)
         return results
