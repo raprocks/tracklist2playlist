@@ -5,8 +5,8 @@ Module for Command Line Implementation and usage
 import sys
 import click
 from spotitools import Spoti
-from sources.livetracklist import Livetracklist
-from sources.thousandonetracklists import Thousandonetracklists
+from tracklist2playlist_sources.livetracklist import Livetracklist
+from tracklist2playlist_sources.thousandonetracklists import Thousandonetracklists
 
 
 @click.command()
