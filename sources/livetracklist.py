@@ -1,9 +1,15 @@
+'''
+module for scraping Livetracklist Page and give an Iterable
+'''
+from typing import Iterable
 from bs4 import BeautifulSoup
 import requests
-from typing import Iterable
 
 class Livetracklist:
-    def __init__(self, url : str):
+    '''
+    Livetracklist.com Scraper
+    '''
+    def __init__(self, url: str):
         self.res = requests.get(url)
         self.soup = BeautifulSoup(self.res.content, features='html.parser')
         self.name = self.soup.find('title').text
@@ -12,15 +18,15 @@ class Livetracklist:
         livetracklist.com scraper
 
         get tracklist in text format to be processed with song title and artist(s)
-        
+
         Parameters
         ----------
         url : str
             url of page from which to scrape tracklist
-        
+
         Returns
         -------
-        Iterable 
+        Iterable
             yeilds tuple of length 2 and has content (song_title, artist(s))
         '''
         soup = self.soup
