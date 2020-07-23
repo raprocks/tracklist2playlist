@@ -1,8 +1,10 @@
 # tracklist2playlist
 Convert a dj set tracklist to playlist
 
-#Installation
+
+# Installation
 pip install tracklist2playlist
 
-#Usage
+
+# Usage
 t2t --help
