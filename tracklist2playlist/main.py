@@ -4,7 +4,7 @@ Module for Command Line Implementation and usage
 
 import sys
 import click
-from spotitools import Spoti
+from tracklist2playlist.spotitools import Spoti
 from tracklist2playlist_sources.livetracklist import Livetracklist
 from tracklist2playlist_sources.thousandonetracklists import Thousandonetracklists
 
