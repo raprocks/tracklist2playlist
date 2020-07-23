@@ -28,7 +28,7 @@ class Spoti:
         builds query for searchinf
         '''
         artist = artist.split("ft.")[0]
-        query = title+" artist:"+artist
+        query = '\"'+title+'\"'+' artist:'+artist
         query = query.replace(" X ", " AND ")
         query = query.replace(" x ", " AND ")
         query = query.replace(" & ", " AND ")
@@ -41,7 +41,13 @@ class Spoti:
         query = self.query_builder(title, artist)
         results = self.spoti.search(q=query, limit=1, type='track')
         if len(results['tracks']['items']) == 0:
-            artist_2 = artist.split("&")[0]
+            temp = artist.split("&")
+            artist_2 = temp[-1]
+            for name in temp:
+                if " " in name:
+                    continue
+                else:
+                    artist_2 = name
             query = self.query_builder(title, artist_2)
             results = self.spoti.search(q=query, limit=1, type='track')
             if len(results['tracks']['items']) == 0:
@@ -51,6 +57,7 @@ class Spoti:
                 if len(results['tracks']['items']) == 0:
                     print("cannot find ", title, "by", artist)
                     return ""
+        print(results['tracks']['items'][0]['name'])
         uri = results['tracks']['items'][0]['id']
         self.searched.append(uri)
         return results

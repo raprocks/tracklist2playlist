@@ -12,7 +12,8 @@ from tracklist2playlist_sources.thousandonetracklists import Thousandonetracklis
 @click.command()
 @click.option('-u', '--username', required=True,
               help="your spotify username",
-              prompt="Please Enter Username: ")
+              prompt="Please Enter Username: ",
+              envvar="SPOTIFY_USERNAME")
 @click.option('--url', required=True,
               help="live url from livetracklist.com or 1001tracklists.com",
               prompt="Please Enter URL: ")
@@ -32,6 +33,7 @@ def main(username, url):
     spoti.make_playlist(playlist_name=tracklist.name,
                         description=tracklist.name)
     for title, artist in tracklist.tracklist():
+        print(title, artist, " ----> ", end="")
         spoti.search(title, artist)
     spoti.add_tracks_to_playlist(spoti.searched)
 
