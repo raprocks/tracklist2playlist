@@ -20,7 +20,8 @@ setup(name="tracklist2playlist",
       package_dir={"tracklist2playlist": "tracklist2playlist",
                    "tracklist2playlist_sources": "tracklist2playlist_sources/"
                    },
-      packages=find_packages(),
+      packages=['tracklist2playlist'],
+      package_data={"tracklist2playlist":["tracklist2playlist_sources/*"]},
       entry_points={
           "console_scripts": [
               "t2t = tracklist2playlist.main:main", ]
